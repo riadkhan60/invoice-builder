@@ -10,33 +10,12 @@ import {
 import formateDate from "../services/formateDate";
 
 
-Font.register({
-  family: "Roboto",
-  fonts: [
-    {
-      src: "./fonts/Roboto-Bold.ttf",
-      fontWeight: "bold",
-    },
-    {
-      src: "./fonts/Roboto-Medium.ttf",
-      fontWeight: "medium",
-    },
-    {
-      src: "./fonts/Roboto-Regular.ttf",
-      fontWeight: "normal",
-    },
-    {
-      src: "./fonts/Roboto-Italic.ttf",
-      fontStyle: "italic",
-      fontWeight: "medium",
-    },
-  ],
-});
+
 
 // Create styles
 const styles = StyleSheet.create({
   page: {
-    fontFamily: "Roboto",
+    // fontFamily: "Roboto",
   },
   container: {
     display: "flex",
