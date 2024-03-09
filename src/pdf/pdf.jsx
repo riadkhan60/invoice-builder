@@ -14,19 +14,19 @@ Font.register({
   family: "Roboto",
   fonts: [
     {
-      src: "./fonts-roboto/Roboto-Bold.ttf",
+      src: "./fonts/Roboto-Bold.ttf",
       fontWeight: "bold",
     },
     {
-      src: "./fonts-roboto/Roboto-Medium.ttf",
+      src: "./fonts/Roboto-Medium.ttf",
       fontWeight: "medium",
     },
     {
-      src: "./fonts-roboto/Roboto-Regular.ttf",
+      src: "./fonts/Roboto-Regular.ttf",
       fontWeight: "normal",
     },
     {
-      src: "./fonts-roboto/Roboto-MediumItalic.ttf",
+      src: "./fonts/Roboto-Italic.ttf",
       fontStyle: "italic",
       fontWeight: "medium",
     },

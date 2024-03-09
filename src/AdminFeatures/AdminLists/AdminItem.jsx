@@ -45,7 +45,25 @@ function AdminItem({ item, index }) {
           {" "}
           Delete
         </button>
-       
+        <PDFDownloadLink
+          document={<MyDocument data={item} />}
+          fileName={`invoice-${item.customer_name || item.customer_token}`}
+        >
+          {({ loading }) => {
+            if (loading) {
+              return (
+                <button className="btn  uppercase">
+                  <span className="loading loading-ring loading-md"></span>
+                </button>
+              );
+            }
+            return (
+              <button className="btn uppercase">
+                Download 
+              </button>
+            );
+          }}
+        </PDFDownloadLink>
       </td>
     </tr>
   );
