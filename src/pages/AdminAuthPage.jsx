@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import useAuthValue from "../privetRouter/useAuthValue";
 import { companyName } from "../data/formBuildData";
 import getPassword from "../services/adminPanel";
+import Logo from "../Ui/logo";
 
 function AdminAuthPage() {
   const [pinInput, setpinInput] = useState("");
@@ -26,9 +27,7 @@ function AdminAuthPage() {
 
   return (
     <div>
-      <h2 className=" mt-5 text-center text-2xl font-bold uppercase">
-        {companyName}
-      </h2>
+      <Logo companyName={companyName}/>
       <div className="flex h-[80vh] items-center justify-center ">
         <form
           onSubmit={onSubmit}

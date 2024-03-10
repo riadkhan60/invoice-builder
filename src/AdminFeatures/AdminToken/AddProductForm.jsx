@@ -43,6 +43,7 @@ function AddProductForm({ setDisabled, setToken }) {
     setSaved(false);
     setToken("");
     setDisabled(false);
+    setDeliveryCost(0);
     dispatch({ type: "RESET" });
   }
   function onAddProduct(e) {
@@ -78,7 +79,7 @@ function AddProductForm({ setDisabled, setToken }) {
     return (
       <div className="rounded-lg bg-base-300 p-10">
         <div className=" mt-6 flex  gap-4  ">
-          <div className=" min-w-[250px] rounded-lg bg-base-100 p-3 max-md:min-w-[200px] ">
+          <div className=" min-w-[250px] overflow-x-auto rounded-lg bg-base-100 p-3 max-md:max-w-[200px] max-md:min-w-[150px] ">
             <code>{link}</code>
           </div>
           <div>

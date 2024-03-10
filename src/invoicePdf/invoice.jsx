@@ -8,7 +8,7 @@ import {
   Font,
 } from "@react-pdf/renderer";
 import formateDate from "../services/formateDate";
-import { roboto_bold, roboto_medium, roboto_medium_italic, roboto_regular } from "./fonts";
+
 
 
 Font.register({

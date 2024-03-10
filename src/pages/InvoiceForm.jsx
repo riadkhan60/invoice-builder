@@ -11,9 +11,10 @@ import { PDFDownloadLink } from "@react-pdf/renderer";
 
 import { HiOutlineDownload } from "react-icons/hi";
 import MyDocument from "../invoicePdf/invoice";
+import Logo from "../Ui/logo";
 
 function InvoiceForm() {
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit } = useForm();
   const [error, setError] = useState(false);
   const [data, setData] = useState([]);
   const { token } = useParams();
@@ -37,6 +38,7 @@ function InvoiceForm() {
   }
   return (
     <div className="flow-root h-[100vh] overflow-hidden">
+      <Logo companyName={"startup"} />
       <div className="mt-[70px] flex items-center justify-center max-md:mt-0">
         <div className=" p-6 ">
           <div className=" rounded-lg bg-base-300">

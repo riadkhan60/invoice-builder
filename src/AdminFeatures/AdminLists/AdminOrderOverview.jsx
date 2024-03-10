@@ -43,7 +43,7 @@ function AdminOrderOverview() {
   const products = JSON.parse(data[0].products);
   console.log(products);
   return (
-    <div className=" relative m-auto mt-20 w-[90%] rounded-md bg-base-300 p-10 lg:w-[70%] ">
+    <div className=" relative m-auto mt-20 mb-10 w-[90%] rounded-md bg-base-300 p-10 lg:w-[70%] ">
       <div className=" flex flex-col gap-3">
         <h2 className=" text-3xl font-bold uppercase">
           Name: {data[0].customer_name || "null"}
