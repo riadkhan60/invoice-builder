@@ -11,7 +11,7 @@ function AdminListItem() {
 
   if (isLoading) return;
   return (
-    <div className=" lg:w-[50%] w-[95%] m-auto p-10 bg-base-300 mt-20">
+    <div className=" lg:w-[50%] w-[95%] m-auto p-10 rounded-lg bg-base-300 mt-20">
       <div className="overflow-x-auto overflow-y-auto ">
         <table className="table ">
           <thead>

@@ -8,9 +8,38 @@ import {
   Font,
 } from "@react-pdf/renderer";
 import formateDate from "../services/formateDate";
+import { roboto_bold, roboto_medium, roboto_medium_italic, roboto_regular } from "./fonts";
 
 
+Font.register({
+  family: 'Sacramento',
+  src: 'https://fonts.gstatic.com/s/sacramento/v4/WFDkXpubrEwopJnSlHV6CC3USBnSvpkopQaUR-2r7iU.ttf',
+});
 
+Font.register({
+  family: 'Roboto',
+  // src: './fonts-roboto/Roboto-Regular.ttf',
+  // fontWeight: 'bold',
+  fonts: [
+    {
+      src:  roboto_bold,
+      fontWeight: 'bold',
+    },
+    {
+      src: roboto_medium,
+      fontWeight: 'medium',
+    },
+    {
+      src: roboto_regular,
+      fontWeight: 'normal',
+    },
+    {
+      src: roboto_medium_italic,
+      fontStyle: 'italic',
+      fontWeight: 'medium',
+    },
+  ],
+});
 
 // Create styles
 const styles = StyleSheet.create({
@@ -30,26 +59,26 @@ const styles = StyleSheet.create({
   viewOne: {
     width: "120px",
     height: "100vh",
-    backgroundColor: "rgb(15, 32, 129)",
+    backgroundColor: "rgb(221, 221, 221)",
     position: "relative",
     transform: "translateX(2px)",
   },
   viewTwo: {
     width: "120px",
     height: "100vh",
-    backgroundColor: "rgb(22, 25, 51)",
+    backgroundColor: "rgb(227, 227, 228)",
     transform: "translateX(1px)",
   },
   viewThree: {
     width: "120px",
     height: "100vh",
-    backgroundColor: "rgb(105, 36, 4)",
+    backgroundColor: "rgb(245, 245, 245)",
   },
 
   header: {
     display: "flex",
     justifyContent: "space-between",
-    alignItems: "center",
+    alignItems: "flex-start",
     flexDirection: "row",
   },
   headerLeft: {
@@ -62,7 +91,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
   },
   headerLeftMain: {
-    color: "rgb(255, 255, 255)",
+    color: "rgb(0, 0, 0)",
     fontSize: "41px",
     fontWeight: "heavy",
   },
@@ -75,7 +104,7 @@ const styles = StyleSheet.create({
     marginLeft: "3px",
   },
   headerLeftMainText: {
-    color: "rgb(255, 255, 255)",
+    color: "rgb(0, 0, 0)",
     fontSize: "12px",
     fontWeight: "bold",
   },
@@ -88,7 +117,7 @@ const styles = StyleSheet.create({
     marginLeft: "3px",
   },
   headerLeftMainTextCol: {
-    color: "white",
+    color: "black",
     marginBottom: "10px",
     fontSize: "16px",
     fontWeight: "medium",
@@ -96,7 +125,7 @@ const styles = StyleSheet.create({
 
   headerLeftMainTextColAddress: {
     fontSize: "13px",
-    color: "rgb(204, 203, 203)",
+    color: "rgb(27, 27, 27)",
     width: "150px",
     lineHeight: "1.3",
     marginBottom: "10px",
@@ -133,48 +162,49 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "row",
     fontSize: "14px",
-    width: "90%",
-    marginLeft: "auto",
-    marginRight: "40px",
+    width: "100%",
     marginBottom: "10px",
     borderBottom: "1px solid green",
     paddingBottom: "5px",
     color: "#1d4ff3",
+    gap: "25px",
+    paddingLeft: "40px",
+    paddingRight: "40px",
   },
   tableBody: {
+    paddingLeft: "40px",
+    paddingRight: "40px",
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
     flexDirection: "row",
     fontSize: "14px",
-    width: "90%",
-    marginLeft: "auto",
-    marginRight: "40px",
+    width: "100%",
     marginBottom: "10px",
     paddingBottom: "5px",
     borderBottom: "1px solid green",
+    gap: "25px",
   },
   tableFooter: {
+    paddingLeft: "40px",
+    paddingRight: "40px",
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
     flexDirection: "row",
     fontSize: "14px",
-    width: "90%",
-    marginLeft: "auto",
-    marginRight: "40px",
+    width: "100%",
     marginBottom: "10px",
     paddingBottom: "5px",
+    gap: "25px",
   },
   tableText: {
-    width: "500px",
-    textAlign: "right",
+    textAlign: "center",
   },
   PaymentStatus: {
-    display: "flex",
-    justifyContent: "flex-end",
-    flexDirection: "row",
-    width: "100%",
+    position: "absolute",
+    top: "20%",
+    right: "0",
   },
   PaymentStatusText: {
     color: "black",
@@ -182,7 +212,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#17f762",
     fontWeight: "medium",
     borderRadius: "10px",
-    width: "60%",
     fontStyle: "italic",
   },
   PaymentStatusTextRed: {
@@ -219,6 +248,7 @@ const styles = StyleSheet.create({
     width: "180px",
     margin: "auto",
     marginTop: "70px",
+
   },
   signature: {
     fontSize: "20px",
@@ -226,6 +256,7 @@ const styles = StyleSheet.create({
     marginHorizontal: "auto",
     width: "50px",
     borderBottom: "1px solid blue",
+    fontFamily: "Sacramento",
   },
   nitroImage: {
     position: "absolute",
@@ -238,12 +269,8 @@ const styles = StyleSheet.create({
   },
 });
 
-
-
-
 // Create Document Component
 const MyDocument = ({ data }) => {
-  console.log(data);
   return (
     <Document>
       <Page size="A4" style={styles.page}>
@@ -263,21 +290,21 @@ const MyDocument = ({ data }) => {
             </View>
             <View style={styles.headerLeftMainTextsCol}>
               <Text style={styles.headerLeftMainTextCol}>
-                {data.customer_name || "N/A"}
+                Name: {data.customer_name || "N/A"}
               </Text>
               <Text style={styles.headerLeftMainTextCol}>
-                {data.customer_phone || "N/A"}
+                Phone: {data.customer_phone || "N/A"}
               </Text>
               <Text style={styles.headerLeftMainTextCol}>
-                {data.customer_email || "N/A"}
+                Email: {data.customer_email || "N/A"}
               </Text>
               <Text style={styles.headerLeftMainTextColAddress}>
-                {data.customer_address || "N/A"}
+                Address: {data.customer_address || "N/A"}
               </Text>
 
               <Text style={styles.headerLeftMainTextColAddress}>
-                {data.customer_comment
-                  ? data.customer_comment
+                {data?.customer_comment
+                  ? data?.customer_comment
                   : "Additional Information: N/A"}
               </Text>
             </View>
@@ -288,7 +315,7 @@ const MyDocument = ({ data }) => {
                 src={"./imgs/shop.jpg"}
                 style={styles.imageCompany}
               ></Image>
-              <Text style={styles.headerRightMainText}>{`Bird's`} Valley</Text>
+              <Text style={styles.headerRightMainText}>Start Up</Text>
             </View>
           </View>
         </View>
@@ -306,35 +333,45 @@ const MyDocument = ({ data }) => {
         </View>
         <View style={styles.table}>
           <View style={styles.tableHeader}>
-            <Text style={styles.tableText}>S/N</Text>
-            <Text style={styles.tableText}>Product Name</Text>
-            <Text style={styles.tableText}>Product Quantity</Text>
-            <Text style={styles.tableText}>Price</Text>
+            <Text style={{ width: "20px" }}>S/N</Text>
+            <Text style={{ width: "70px" }}>Quantity</Text>
+            <Text style={{ width: "320px" }}>Product Name</Text>
+            <Text style={{ width: "100px" }}>Price</Text>
+          </View>
+
+          {JSON.parse(data.products).map((item, index) => (
+            <View key={index} style={styles.tableBody}>
+              <Text style={{ width: "20px" }}>{index + 1}</Text>
+              <Text style={{ width: "70px" }}>{item.count}</Text>
+              <Text style={{ width: "320px" }}>{item.name}</Text>
+              <Text style={{ width: "100px" }}>{item.price} BDT</Text>
+            </View>
+          ))}
+          <View style={styles.tableBody}>
+            <Text style={{ width: "20px" }}></Text>
+            <Text style={{ width: "70px" }}></Text>
+            <Text style={{ width: "320px" }}>Total Product Price</Text>
+            <Text style={{ width: "100px" }}>{data.total_price} BDT</Text>
           </View>
           <View style={styles.tableBody}>
-            <Text style={styles.tableText}>01</Text>
-            <Text style={styles.tableText}>{}</Text>
-            <Text style={styles.tableText}>{}</Text>
-            <Text style={styles.tableText}>{} BDT</Text>
+            <Text style={{ width: "20px" }}></Text>
+            <Text style={{ width: "70px" }}></Text>
+            <Text style={{ width: "320px" }}>Delivery Cost</Text>
+            <Text style={{ width: "100px" }}>{data.delivery_cost} BDT</Text>
           </View>
-          <View style={styles.tableBody}>
-            <Text style={styles.tableText}>02</Text>
-            <Text style={styles.tableText}>Delivery Cost</Text>
-            <Text style={styles.tableText}></Text>
-            <Text style={styles.tableText}>{} BDT</Text>
-          </View>
+
           <View style={styles.tableFooter}>
-            <Text style={styles.tableText}></Text>
-            <Text style={styles.tableText}></Text>
-            <Text style={styles.tableText}>Total =</Text>
-            <Text style={styles.tableText}>
-              {/* {Number(data.price) + Number(data.deliveryCost)} BDT */}
+            <Text style={{ width: "20px" }}></Text>
+            <Text style={{ width: "70px" }}></Text>
+            <Text style={{ width: "320px" }}>Total</Text>
+            <Text style={{ width: "100px" }}>
+              {Number(data.total_price) + Number(data.delivery_cost)} BDT
             </Text>
           </View>
         </View>
         <View style={styles.footerText}>
           <Text>Thank you for buying our products</Text>
-          <Text style={styles.signature}>sohan</Text>
+          <Text style={styles.signature}>startup</Text>
         </View>
 
         <Text
@@ -349,7 +386,6 @@ const MyDocument = ({ data }) => {
         >
           {data.created_at}
         </Text>
-  
       </Page>
     </Document>
   );

@@ -8,6 +8,8 @@ import AdminToken from "./AdminFeatures/AdminToken/AdminToken";
 import AdminLists from "./AdminFeatures/AdminLists/AdminLists";
 import AdminListItem from "./AdminFeatures/AdminLists/AdminListItem";
 import AdminOrderOverview from "./AdminFeatures/AdminLists/AdminOrderOverview";
+import AdminInvoiceForm from "./AdminFeatures/AdminEdits/AdminEdit";
+
 
 
 const router = createBrowserRouter([
@@ -38,21 +40,26 @@ const router = createBrowserRouter([
           {
             path: ":id",
             element: <AdminOrderOverview />,
+          }, {
+            path: ":token/edit",
+            element: <AdminInvoiceForm />,
           }
         ]
       },
     ],
   },
   {
-    path: "inovie-form",
+    path: "invoice-form/:token",
     element: <InvoiceForm />,
   },
 ]);
 
 function App() {
+  
   return (
     <AuthProvider>
       <RouterProvider router={router} />
+      
     </AuthProvider>
   );
 }

@@ -53,21 +53,25 @@ export async function loadList() {
 }
 
 
-export async function updateCustomerInfo() {
-  const customerToken = "1t2foq"; // Replace with the actual customer token value
+export async function updateCustomerInfo(updateData, token) {
+  const customerToken = token; // Replace with the actual customer token value
 
   const { data, error } = await supabase
     .from("orders")
     .update({
-      customer_name: 'rrrrasdadadad',
-      customer_phone: '0123adad4',
+      customer_name: updateData.name,
+      customer_phone: updateData.phoneNumber,
+      customer_email: updateData.email,
+      customer_address: updateData.address,
+      customer_comment: updateData.comment
     })
-    .eq("customer_token", customerToken);
+    .eq("customer_token", customerToken).select();
 
   if (error) {
     console.error("Error updating order:", error);
   } else {
     console.log("Order updated successfully:", data);
+    return data;
   }
 }
 

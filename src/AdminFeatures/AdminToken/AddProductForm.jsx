@@ -7,7 +7,7 @@ import { Context } from "./AdminToken";
 import copy from "copy-to-clipboard";
 import { IoMdDoneAll } from "react-icons/io";
 import { FaRegCopy } from "react-icons/fa6";
-import { createOrder, getAlist, loadList, updateCustomerInfo } from "../../services/orderlits";
+import { createOrder } from "../../services/orderlits";
 
 function AddProductForm({ setDisabled, setToken }) {
   const [deliveryCost, setDeliveryCost] = useState(0);
@@ -33,12 +33,13 @@ function AddProductForm({ setDisabled, setToken }) {
       customer_comment: "",
     };
     await createOrder(data);
+
+    setLink(`${window.location.origin}/invoice-form/${state.customerToken}`);
     setSaved(true);
     
   }
 
   async function handleNew() {
-    await loadList();
     setSaved(false);
     setToken("");
     setDisabled(false);
@@ -101,8 +102,7 @@ function AddProductForm({ setDisabled, setToken }) {
         <button className="btn mt-6 w-full" onClick={handleNew}>
           Create New
         </button>
-        <button onClick={async () => await updateCustomerInfo()}>update</button>
-        <button onClick={async () => await getAlist()}>update</button>
+        
       </div>
     );
   }

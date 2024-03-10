@@ -1,8 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { deleteOrder } from "../../services/orderlits";
 import { useMutation, useQueryClient } from "react-query";
-import MyDocument from "../../pdf/pdf";
+import MyDocument from "../../pdf/Pdf";
 import { PDFDownloadLink } from "@react-pdf/renderer";
+import { RiDeleteBinLine } from "react-icons/ri";
+import { HiOutlineDownload } from "react-icons/hi";
 
 function AdminItem({ item, index }) {
   const navigateTo = useNavigate();
@@ -41,9 +43,11 @@ function AdminItem({ item, index }) {
       <td>{item.total_price + item.delivery_cost}</td>
       <td>{item.paid ? "paid" : "unpaid"}</td>
       <td>
+        <div className="flex gap-4 items-center">
+
         <button onClick={deleteList} className="btn ">
           {" "}
-          Delete
+          <RiDeleteBinLine />
         </button>
         <PDFDownloadLink
           document={<MyDocument data={item} />}
@@ -52,18 +56,19 @@ function AdminItem({ item, index }) {
           {({ loading }) => {
             if (loading) {
               return (
-                <button className="btn  uppercase">
+                <button onClick={(e)=>{e.stopPropagation()}} className="btn  uppercase">
                   <span className="loading loading-ring loading-md"></span>
                 </button>
               );
             }
             return (
-              <button className="btn uppercase">
-                Download 
+              <button onClick={(e)=>{e.stopPropagation()}} className="btn uppercase">
+                <HiOutlineDownload />
               </button>
             );
           }}
         </PDFDownloadLink>
+        </div>
       </td>
     </tr>
   );
