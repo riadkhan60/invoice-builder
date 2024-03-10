@@ -16,30 +16,7 @@ Font.register({
   src: 'https://fonts.gstatic.com/s/sacramento/v4/WFDkXpubrEwopJnSlHV6CC3USBnSvpkopQaUR-2r7iU.ttf',
 });
 
-Font.register({
-  family: 'Roboto',
-  // src: './fonts-roboto/Roboto-Regular.ttf',
-  // fontWeight: 'bold',
-  fonts: [
-    {
-      src:  roboto_bold,
-      fontWeight: 'bold',
-    },
-    {
-      src: roboto_medium,
-      fontWeight: 'medium',
-    },
-    {
-      src: roboto_regular,
-      fontWeight: 'normal',
-    },
-    {
-      src: roboto_medium_italic,
-      fontStyle: 'italic',
-      fontWeight: 'medium',
-    },
-  ],
-});
+
 
 // Create styles
 const styles = StyleSheet.create({

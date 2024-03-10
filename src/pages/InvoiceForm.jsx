@@ -8,8 +8,9 @@ import { useParams } from "react-router-dom";
 import { updateCustomerInfo } from "../services/orderlits";
 import { useState } from "react";
 import { PDFDownloadLink } from "@react-pdf/renderer";
-import MyDocument from "../pdf/Pdf";
+
 import { HiOutlineDownload } from "react-icons/hi";
+import MyDocument from "../invoicePdf/invoice";
 
 function InvoiceForm() {
   const { register, handleSubmit, reset } = useForm();

@@ -1,10 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { deleteOrder } from "../../services/orderlits";
 import { useMutation, useQueryClient } from "react-query";
-import MyDocument from "../../pdf/Pdf";
+
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { HiOutlineDownload } from "react-icons/hi";
+import MyDocument from "../../invoicePdf/invoice";
 
 function AdminItem({ item, index }) {
   const navigateTo = useNavigate();

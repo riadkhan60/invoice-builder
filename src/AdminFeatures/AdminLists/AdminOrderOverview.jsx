@@ -3,11 +3,12 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { deleteOrder, getAlist } from "../../services/orderlits";
 import AdminListProductTable from "./AdminListProductTable";
 import { PDFDownloadLink } from "@react-pdf/renderer";
-import MyDocument from "../../pdf/Pdf";
+
 import { HiOutlineDownload } from "react-icons/hi";
 import { RiDeleteBinLine } from "react-icons/ri";
 import formateDate from "../../services/formateDate";
 import { MdEdit } from "react-icons/md";
+import MyDocument from "../../invoicePdf/invoice";
 
 function AdminOrderOverview() {
   const { id } = useParams();
