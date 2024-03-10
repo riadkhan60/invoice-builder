@@ -9,6 +9,7 @@ import { RiDeleteBinLine } from "react-icons/ri";
 import formateDate from "../../services/formateDate";
 import { MdEdit } from "react-icons/md";
 import MyDocument from "../../invoicePdf/invoice";
+import toast from "react-hot-toast";
 
 function AdminOrderOverview() {
   const { id } = useParams();
@@ -36,6 +37,12 @@ function AdminOrderOverview() {
 
   function deleteList() {
     mutate(data[0].customer_token);
+    toast.success("Order deleted successfully", {
+      style: {
+        backgroundColor: "black",
+        color: "white",
+      },
+    });
     navigateTo("/admin/order-lists");
   }
 

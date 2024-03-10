@@ -8,6 +8,7 @@ import copy from "copy-to-clipboard";
 import { IoMdDoneAll } from "react-icons/io";
 import { FaRegCopy } from "react-icons/fa6";
 import { createOrder } from "../../services/orderlits";
+import toast from "react-hot-toast";
 
 function AddProductForm({ setDisabled, setToken }) {
   const [deliveryCost, setDeliveryCost] = useState(0);
@@ -19,7 +20,25 @@ function AddProductForm({ setDisabled, setToken }) {
   const [textCopy, setCopy] = useState(false);
 
   async function handleSave() {
-    if (productsList.length < 1 || !customerToken) return;
+    if (productsList.length < 1 || !customerToken) {
+      if (productsList.length < 1) {
+        toast.error("Please add at least one product", {
+          style: {
+            color: 'white',
+            backgroundColor: 'red',
+          }
+        }); 
+      } else {
+        toast.error("Please add customer token", {
+          style: {
+            color: "white",
+            backgroundColor: "red",
+          },
+        });
+      }
+      return;
+    }
+
     const data = {
       products: JSON.stringify(state.products),
       total_price: state.totalPrice,
@@ -36,7 +55,12 @@ function AddProductForm({ setDisabled, setToken }) {
 
     setLink(`${window.location.origin}/invoice-form/${state.customerToken}`);
     setSaved(true);
-    
+    toast.success("Order created successfully", {
+      style: {
+        backgroundColor: "black",
+        color: "white",
+      }
+    })
   }
 
   async function handleNew() {

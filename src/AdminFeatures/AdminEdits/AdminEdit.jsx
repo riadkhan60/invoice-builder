@@ -9,6 +9,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import {  useState } from "react";
 
 import { updateCustomerInfo } from "../../services/orderlits";
+import toast from "react-hot-toast";
 
 
 function AdminInvoiceForm() {
@@ -22,6 +23,12 @@ function AdminInvoiceForm() {
     if (savedData.length === 0) {
       setError(true);
     }
+    toast.success("Order edited successfully", {
+      style: {
+        backgroundColor: "black",
+        color: "white",
+      },
+    });
     navigate("/admin/order-lists");
   }
   if (error) {

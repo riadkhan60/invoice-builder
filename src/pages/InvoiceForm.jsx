@@ -12,6 +12,7 @@ import { PDFDownloadLink } from "@react-pdf/renderer";
 import { HiOutlineDownload } from "react-icons/hi";
 import MyDocument from "../invoicePdf/invoice";
 import Logo from "../Ui/logo";
+import toast from "react-hot-toast";
 
 function InvoiceForm() {
   const { register, handleSubmit } = useForm();
@@ -28,6 +29,13 @@ function InvoiceForm() {
 
     setData(savedData);
     setSaved(true);
+
+     toast.success("Invoice created successfully, download the pdf now", {
+       style: {
+         backgroundColor: "black",
+         color: "white",
+       },
+     });
   }
   if (error) {
     return (

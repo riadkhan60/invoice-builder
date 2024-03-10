@@ -9,6 +9,7 @@ import AdminLists from "./AdminFeatures/AdminLists/AdminLists";
 import AdminListItem from "./AdminFeatures/AdminLists/AdminListItem";
 import AdminOrderOverview from "./AdminFeatures/AdminLists/AdminOrderOverview";
 import AdminInvoiceForm from "./AdminFeatures/AdminEdits/AdminEdit";
+import { Toaster } from "react-hot-toast";
 
 
 
@@ -59,7 +60,7 @@ function App() {
   return (
     <AuthProvider>
       <RouterProvider router={router} />
-      
+      <Toaster/>
     </AuthProvider>
   );
 }

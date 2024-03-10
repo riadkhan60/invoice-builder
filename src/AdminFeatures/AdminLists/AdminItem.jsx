@@ -6,6 +6,7 @@ import { PDFDownloadLink } from "@react-pdf/renderer";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { HiOutlineDownload } from "react-icons/hi";
 import MyDocument from "../../invoicePdf/invoice";
+import toast from "react-hot-toast";
 
 function AdminItem({ item, index }) {
   const navigateTo = useNavigate();
@@ -30,6 +31,12 @@ function AdminItem({ item, index }) {
   function deleteList(e) {
     e.stopPropagation();
     mutate(item.customer_token);
+    toast.success("Order deleted successfully", {
+      style: {
+        backgroundColor: "black",
+        color: "white",
+      },
+    });
     navigateTo("/admin/order-lists");
   }
   return (
